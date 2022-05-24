@@ -37,7 +37,7 @@ jobs:
         if [ $KERNEL = "4.4" ] ; then
         git clone --depth=1 https://github.com/MeIsReallyBa/padavan-4.4.git /opt/rt-n56u
         else
-        git clone --depth=1 https://github.com/yizhishaonianxx/rt-n56u.git /opt/rt-n56u
+        git clone --depth=1 https://github.com/yizhishaonianxx/Padavan-KVR.git /opt/rt-n56u
         fi
         cd /opt/rt-n56u/toolchain-mipsel
         sh dl_toolchain.sh
@@ -60,6 +60,7 @@ jobs:
         sed -i '/CONFIG_FIRMWARE_INCLUDE_MENTOHUST/d' .config #删除配置项MENTOHUST
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT/d' .config #删除配置项SCUTCLIENT
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS/d' .config #删除配置项SS plus+
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_ALDRIVER/d' .config #删除配置项阿里云盘
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SSSERVER/d' .config #删除配置项SS server
         sed -i '/CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER/d' .config #删除配置项DNSFORWARDER
         sed -i '/CONFIG_FIRMWARE_INCLUDE_ADBYBY/d' .config #删除配置项adbyby plus+
@@ -84,7 +85,7 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_XRAY=y" >> .config #集成xray执行文件  ~4.5M
         echo "CONFIG_FIRMWARE_INCLUDE_V2RAY=n" >> .config #集成v2ray执行文件
         echo "CONFIG_FIRMWARE_INCLUDE_DDNSTO=y" >> .config #ddnsto  ~0.5M
-        echo "CONFIG_FIRMWARE_INCLUDE_ALDRIVER=n" >> .config  #阿里云盘  ~3m
+        echo "CONFIG_FIRMWARE_INCLUDE_ALDRIVER=y" >> .config  #阿里云盘  ~3m
         echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> .config #zerotier ~1.3M
         echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=y" >> .config #aliddns
         else
